@@ -86,7 +86,7 @@
                                         <td>
                                             <button type="button" class="btn btn-primary btn-sm mx-1" href="#"><i class="fas fa-search"></i></button>
                                             <a class="btn btn-success btn-sm mx-1" href=""><i class="fas fa-message"></i></a>
-                                            <button type="button" class="btn btn-danger btn-sm mx-1" href="#"><i class="fas fa-x"></i></button>
+                                            <button type="button" class="btn btn-danger btn-sm mx-1" href="#"><i class="fas fa-trash"></i></button>
                                         </td>
                                     </tr>
                                     
@@ -97,7 +97,7 @@
                                         <td>Wira</td>
                                         <td>
                                             <button type="button" class="btn btn-primary btn-sm mx-1" href="#"><i class="fas fa-search"></i></button>
-                                            <a class="btn btn-warning btn-sm mx-1" href=""><i class="fas fa-pencil-alt"></i></a>
+                                            <a class="btn btn-success btn-sm mx-1" href=""><i class="fas fa-message"></i></a>
                                             <button type="button" class="btn btn-danger btn-sm mx-1" href="#"><i class="fas fa-trash"></i></button>
                                         </td>
                                     </tr>

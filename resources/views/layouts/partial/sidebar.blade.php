@@ -60,6 +60,20 @@
                         <p>Komentar</p>
                     </a>
                 </li>
+
+                <li class="nav-item">
+                    <a href="/Jadwal" class="nav-link {{ ($titel === "Jadwal Event") ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-calendar"></i>
+                        <p>Jadwal Event</p>
+                    </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="/Users" class="nav-link {{ ($titel === "Kelola Users") ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-users"></i>
+                        <p>Kelola Users</p>
+                    </a>
+                </li>
             </ul>
         </nav>
 

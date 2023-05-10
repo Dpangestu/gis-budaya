@@ -37,5 +37,13 @@ Route::controller(PengajuanController::class)->group(function () {
 Route::controller(KomentarController::class)->group(function () {
     Route::get('/komentar', 'index');
 });
+
+Route::controller(JadwalController::class)->group(function () {
+    Route::get('/jadwal', 'index');
+});
+
+Route::controller(UsersController::class)->group(function () {
+    Route::get('/users', 'index');
+});
     
 Route::get('/dashboard', [DashboardController::class, 'index']);
