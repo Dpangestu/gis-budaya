@@ -28,8 +28,15 @@
 
                 <li class="nav-item">
                     <a href="/dashboard" class="nav-link {{ ($titel === "Dashboard") ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <i class="nav-icon fas fa-th"></i>
                         <p>Dashboard</p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="/seni" class="nav-link {{ ($titel === "Seni") ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-palette"></i>
+                        <p>Data Seni</p>
                     </a>
                 </li>
 
@@ -39,25 +46,18 @@
                         <p>Data Budaya</p>
                     </a>
                 </li>
-
+                
                 <li class="nav-item">
-                    <a href="" class="nav-link">
-                        <i class="nav-icon fas fa-chalkboard"></i>
-                        <p>Data Kelas</p>
+                    <a href="/pengajuan" class="nav-link {{ ($titel === "Pengajuan Data") ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-file"></i>
+                        <p>Pengajuan Data</p>
                     </a>
                 </li>
                 
                 <li class="nav-item">
-                    <a href="" class="nav-link">
-                        <i class="nav-icon fas fa-money-bill-wave"></i>
-                        <p>Pembayaran</p>
-                    </a>
-                </li>
-                
-                <li class="nav-item">
-                    <a href="" class="nav-link">
-                        <i class="nav-icon fas fa-chart-pie"></i>
-                        <p>Laporan</p>
+                    <a href="/komentar" class="nav-link {{ ($titel === "Komentar") ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-comments"></i>
+                        <p>Komentar</p>
                     </a>
                 </li>
             </ul>

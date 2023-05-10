@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Budaya Cirebon</h1>
+                    <h1 class="m-0">Seni Cirebon</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -24,7 +24,7 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Peta Lokasi Budaya Cirebon</h3>
+                            <h3 class="card-title">Peta Lokasi Seni Cirebon</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                     <i class="fas fa-minus"></i>
@@ -52,7 +52,7 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Data Budaya Cirebon</h3>
+                            <h3 class="card-title">Data Seni Cirebon</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                     <i class="fas fa-minus"></i>
@@ -94,7 +94,7 @@
                                 
                                     <tr class="bg-primary" style="text-align: center">
                                         <th style="width: 50px;">No</th>
-                                        <th>Nama Budaya</th>
+                                        <th>Nama Seni/Sanggar</th>
                                         <th>Pengelola</th>
                                         <th>Dipublikasi Oleh</th>
                                         <th>Aksi</th>
@@ -105,8 +105,8 @@
                                     
                                     <tr>
                                         <td class="text-center"><?= $i++ ;?></td>
-                                        <td>Keraton Kasepuhan</td>
-                                        <td>DISBUDPAR</td>
+                                        <td>Sanggar Seni Brai Sekar Pusaka</td>
+                                        <td>Kang Ace</td>
                                         <td>SIG-BUDAYA</td>
                                         <td>
                                             <button type="button" class="btn btn-primary btn-sm mx-1" href="#"><i class="fas fa-search"></i></button>
@@ -117,8 +117,8 @@
                                     
                                     <tr>
                                         <td class="text-center"><?= $i++ ;?></td>
-                                        <td>Keraton Kacirebonan</td>
-                                        <td>DISBUDPAR</td>
+                                        <td>Sanggar Tari Intan Dewi</td>
+                                        <td>Intan Sulhayati</td>
                                         <td>SIG-BUDAYA</td>
                                         <td>
                                             <button type="button" class="btn btn-primary btn-sm mx-1" href="#"><i class="fas fa-search"></i></button>

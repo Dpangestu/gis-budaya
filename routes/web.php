@@ -1,8 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SeniController;
 use App\Http\Controllers\BudayaController;
+use App\Http\Controllers\KomentarController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PengajuanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,4 +26,16 @@ Route::controller(BudayaController::class)->group(function () {
     Route::get('/budaya', 'index');
 });
 
+Route::controller(SeniController::class)->group(function () {
+    Route::get('/seni', 'index');
+});
+
+Route::controller(PengajuanController::class)->group(function () {
+    Route::get('/pengajuan', 'index');
+});
+
+Route::controller(KomentarController::class)->group(function () {
+    Route::get('/komentar', 'index');
+});
+    
 Route::get('/dashboard', [DashboardController::class, 'index']);
