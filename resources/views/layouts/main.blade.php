@@ -14,6 +14,13 @@
     <link rel="stylesheet" href="{{ asset('tamplate/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
 
     <link rel="stylesheet" href="{{ asset('tamplate/dist/css/adminlte.min.css?v=3.2.0') }}">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+    integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
     <script nonce="5082becc-93ea-4fad-9871-bb21608831d6">
         (function(w, d) {
             ! function(bv, bw, bx, by) {
@@ -107,7 +114,35 @@
         
     </div>
 
+    <script>
+        var map = L.map('map').setView([-6.7488, 108.5595], 11);
 
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Mendefinisikan batas-batas geografis Kabupaten Cirebon
+        var bounds = [
+        [-6.9818, 108.2693], // Koordinat sudut barat laut
+        [-6.6661, 108.8244]  // Koordinat sudut tenggara
+        ];
+
+        // Menampilkan polygon Kabupaten Cirebon
+        L.polygon([
+        bounds,
+        [[-6.8158, 108.6808], [-6.6693, 108.6121], [-6.6709, 108.7408], [-6.7939, 108.8068], [-6.8645, 108.7268], [-6.8158, 108.6808]]
+        ]).addTo(map);
+
+        // Menampilkan batas-batas geografis Kabupaten Cirebon pada peta
+        map.fitBounds(bounds);
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
+    </script>
 
     <script src="{{ asset('tamplate/plugins/jquery/jquery.min.js') }}"></script>
 

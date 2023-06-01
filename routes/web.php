@@ -24,6 +24,7 @@ Route::get('/', function () {
 
 Route::controller(BudayaController::class)->group(function () {
     Route::get('/budaya', 'index');
+    Route::post('/budaya/store', 'store');
 });
 
 Route::controller(SeniController::class)->group(function () {
