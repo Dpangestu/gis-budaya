@@ -19,7 +19,11 @@
 
     <section class="content">
         <div class="container-fluid">
-
+            @if (session()->has('success'))
+                <div class="alert alert-success" role="alert">
+                    {{ session('success') }}
+                </div>
+            @endif
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
@@ -35,12 +39,8 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <div class="p-1 flex-fill" style="overflow: hidden">
-
-                                <div id="world-map-markers">
-                                    <div class="map"></div>
+                                <div id="map" style="height: 500px;">
                                 </div>
-                            </div>
                         </div>
                     </div>
 
@@ -75,7 +75,8 @@
                                     </div>
                                     &nbsp;
                                     <div class="input-group-append">
-                                        <a class="btn btn-info btn-sm" href="">
+                                        <a type="button" class="btn btn-info btn-sm" data-toggle="modal"
+                                                data-target="#form-tambah-data">
                                             <i class="fas fa-plus-circle"></i>
                                         </a>
                                     </div>
@@ -96,36 +97,25 @@
                                         <th style="width: 50px;">No</th>
                                         <th>Nama Budaya</th>
                                         <th>Pengelola</th>
-                                        <th>Dipublikasi Oleh</th>
+                                        <th>Kategori</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php $i = 1 ;?>
-                                    
+                                    @foreach ($budayas as $item )
                                     <tr>
                                         <td class="text-center"><?= $i++ ;?></td>
-                                        <td>Keraton Kasepuhan</td>
-                                        <td>DISBUDPAR</td>
-                                        <td>SIG-BUDAYA</td>
+                                        <td>{{ $item->nama_budaya }}</td>
+                                        <td>{{ $item->pengelola }}</td>
+                                        <td>{{ $item->kategori }}</td>
                                         <td>
                                             <button type="button" class="btn btn-primary btn-sm mx-1" href="#"><i class="fas fa-search"></i></button>
                                             <a class="btn btn-warning btn-sm mx-1" href=""><i class="fas fa-pencil-alt"></i></a>
                                             <button type="button" class="btn btn-danger btn-sm mx-1" href="#"><i class="fas fa-trash"></i></button>
                                         </td>
-                                    </tr>
-                                    
-                                    <tr>
-                                        <td class="text-center"><?= $i++ ;?></td>
-                                        <td>Keraton Kacirebonan</td>
-                                        <td>DISBUDPAR</td>
-                                        <td>SIG-BUDAYA</td>
-                                        <td>
-                                            <button type="button" class="btn btn-primary btn-sm mx-1" href="#"><i class="fas fa-search"></i></button>
-                                            <a class="btn btn-warning btn-sm mx-1" href=""><i class="fas fa-pencil-alt"></i></a>
-                                            <button type="button" class="btn btn-danger btn-sm mx-1" href="#"><i class="fas fa-trash"></i></button>
-                                        </td>
-                                    </tr>
+                                    </tr>                    
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -138,4 +128,107 @@
     </section>
 
 
+    {{-- modal tambah --}}
+    <div class="modal fade" id="form-tambah-data" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" >Tambah Data Kecamatan</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="/budaya/store" method="post">
+                        @csrf
+                        
+                        <div class="form-group">
+                            <label for="nama_budaya">Nama Budaya</label>
+                            <input type="text" class="form-control" value="{{ old('nama_budaya') }}" @error('nama_budaya') is invalid @enderror id="nama_budaya" name="nama_budaya" required>
+                            @error('nama_budaya')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="deskripsi">Deskripsi</label>
+                            <input type="text" class="form-control" value="{{ old('deskripsi') }}" @error('deskripsi') is invalid @enderror id="deskripsi" name="deskripsi" required>
+                            @error('deskripsi')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="pengelola">Pengelola</label>
+                            <input type="text" class="form-control" value="{{ old('pengelola') }}" @error('pengelola') is invalid @enderror id="pengelola" name="pengelola" required>
+                            @error('pengelola')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="kategori">Kategori</label>
+                            <input type="text" class="form-control" value="{{ old('kategori') }}" @error('kategori') is invalid @enderror id="kategori" name="kategori" required>
+                            @error('kategori')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="foto">Foto</label>
+                            <input type="file" class="form-control-file" value="{{ old('foto') }}" @error('foto') is invalid @enderror id="foto" name="foto" required>
+                            @error('foto')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="htm">Harga Tiket Masuk</label>
+                            <input type="text" class="form-control" value="{{ old('htm') }}" @error('htm') is invalid @enderror id="htm" name="htm" required>
+                            @error('htm')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="latitude">Latitude</label>
+                            <input type="text" class="form-control" value="{{ old('latitude') }}" @error('latitude') is invalid @enderror id="latitude" name="latitude" required>
+                            @error('latitude')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="longitude">Longitude</label>
+                            <input type="text" class="form-control" value="{{ old('longitude') }}" @error('longitude') is invalid @enderror id="longitude" name="longitude" required>
+                            @error('longitude')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Simpan</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
