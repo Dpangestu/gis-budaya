@@ -22,9 +22,15 @@ Route::get('/', function () {
     return view('landingpage');
 });
 
+
 Route::controller(BudayaController::class)->group(function () {
     Route::get('/budaya', 'index');
+    Route::get('/budaya/create', 'create');
     Route::post('/budaya/store', 'store');
+    Route::get('/budaya/edit/{id}', 'edit');
+    Route::post('/budaya/update/{id}', 'update');
+    Route::delete('/budaya/destroy/{id}', 'destroy');
+
 });
 
 Route::controller(SeniController::class)->group(function () {

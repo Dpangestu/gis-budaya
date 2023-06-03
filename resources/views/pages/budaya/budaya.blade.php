@@ -8,10 +8,7 @@
                     <h1 class="m-0">Budaya Cirebon</h1>
                 </div>
                 <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Dashboard v2</li>
-                    </ol>
+                    
                 </div>
             </div>
         </div>
@@ -22,8 +19,15 @@
             @if (session()->has('success'))
                 <div class="alert alert-success" role="alert">
                     {{ session('success') }}
+                    
                 </div>
             @endif
+            @if (session()->has('error'))
+                <div class="alert alert-danger" role="alert">
+                    {{ session('error') }}
+                </div>
+            @endif
+
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
@@ -39,7 +43,10 @@
                             </div>
                         </div>
                         <div class="card-body">
-                                <div id="map" style="height: 500px;">
+                                <div id="map" style="height: 400px;">
+                                    @section('scripts')
+                                    
+                                    @endsection
                                 </div>
                         </div>
                     </div>
@@ -75,8 +82,7 @@
                                     </div>
                                     &nbsp;
                                     <div class="input-group-append">
-                                        <a type="button" class="btn btn-info btn-sm" data-toggle="modal"
-                                                data-target="#form-tambah-data">
+                                        <a class="btn btn-info btn-sm" href="/budaya/create">
                                             <i class="fas fa-plus-circle"></i>
                                         </a>
                                     </div>
@@ -111,8 +117,12 @@
                                         <td>{{ $item->kategori }}</td>
                                         <td>
                                             <button type="button" class="btn btn-primary btn-sm mx-1" href="#"><i class="fas fa-search"></i></button>
-                                            <a class="btn btn-warning btn-sm mx-1" href=""><i class="fas fa-pencil-alt"></i></a>
-                                            <button type="button" class="btn btn-danger btn-sm mx-1" href="#"><i class="fas fa-trash"></i></button>
+                                            <a class="btn btn-warning btn-sm mx-1" href="/budaya/edit/{{ $item->id_budaya }}"><i class="fas fa-pencil-alt"></i></a>
+                                            <button type="submit" class="btn btn-danger btn-sm mx-1"
+                                                    data-toggle="modal"
+                                                    data-target="#konfirmasi-hapus-{{ $item->id_budaya }}">
+                                                    <i class="fas fa-trash"></i>
+                                            </button>
                                         </td>
                                     </tr>                    
                                     @endforeach
@@ -127,108 +137,33 @@
         </div>
     </section>
 
-
-    {{-- modal tambah --}}
-    <div class="modal fade" id="form-tambah-data" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable modal-lg">
+    {{-- modal delete --}}
+    @foreach ($budayas as $item )
+    <div class="modal fade" id="konfirmasi-hapus-{{ $item->id_budaya }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog ">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" >Tambah Data Kecamatan</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Hapus Kecamatan</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="/budaya/store" method="post">
+                    <form action="/budaya/destroy/{{ $item->id_budaya }}" method="POST" class="d-inline">
                         @csrf
-                        
-                        <div class="form-group">
-                            <label for="nama_budaya">Nama Budaya</label>
-                            <input type="text" class="form-control" value="{{ old('nama_budaya') }}" @error('nama_budaya') is invalid @enderror id="nama_budaya" name="nama_budaya" required>
-                            @error('nama_budaya')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
-
-                        <div class="form-group">
-                            <label for="deskripsi">Deskripsi</label>
-                            <input type="text" class="form-control" value="{{ old('deskripsi') }}" @error('deskripsi') is invalid @enderror id="deskripsi" name="deskripsi" required>
-                            @error('deskripsi')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
-
-                        <div class="form-group">
-                            <label for="pengelola">Pengelola</label>
-                            <input type="text" class="form-control" value="{{ old('pengelola') }}" @error('pengelola') is invalid @enderror id="pengelola" name="pengelola" required>
-                            @error('pengelola')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
-
-                        <div class="form-group">
-                            <label for="kategori">Kategori</label>
-                            <input type="text" class="form-control" value="{{ old('kategori') }}" @error('kategori') is invalid @enderror id="kategori" name="kategori" required>
-                            @error('kategori')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
-
-                        <div class="form-group">
-                            <label for="foto">Foto</label>
-                            <input type="file" class="form-control-file" value="{{ old('foto') }}" @error('foto') is invalid @enderror id="foto" name="foto" required>
-                            @error('foto')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
-
-                        <div class="form-group">
-                            <label for="htm">Harga Tiket Masuk</label>
-                            <input type="text" class="form-control" value="{{ old('htm') }}" @error('htm') is invalid @enderror id="htm" name="htm" required>
-                            @error('htm')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
-
-                        <div class="form-group">
-                            <label for="latitude">Latitude</label>
-                            <input type="text" class="form-control" value="{{ old('latitude') }}" @error('latitude') is invalid @enderror id="latitude" name="latitude" required>
-                            @error('latitude')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
-
-                        <div class="form-group">
-                            <label for="longitude">Longitude</label>
-                            <input type="text" class="form-control" value="{{ old('longitude') }}" @error('longitude') is invalid @enderror id="longitude" name="longitude" required>
-                            @error('longitude')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
-
+                        @method('DELETE')
+                        Apakah anda yakin ingin menghapus data ini ?
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Simpan</button>
+                            <button type="submit" class="btn btn-primary">Hapus</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+    @endforeach
+
+    {{-- maps --}}
+    
 @endsection
