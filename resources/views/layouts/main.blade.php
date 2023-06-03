@@ -135,7 +135,75 @@
 
         // Menampilkan batas-batas geografis Kabupaten Cirebon pada peta
         map.fitBounds(bounds);
+
+        // Menampilkan Marker
+        @foreach($coordinates as $coordinate)
+            var marker = L.marker([{{ $coordinate['latitude'] }}, {{ $coordinate['longitude'] }}]).addTo(map);
+            marker.bindPopup('{{ $coordinate['latitude'] }}'); // Ganti "name" dengan kolom yang sesuai di tabel lokasi
+        @endforeach
+
+        //Menambahakan Marker
+        var marker;
+
+        map.on('click', function(e) {
+            if (marker) {
+                map.removeLayer(marker);
+            }
+            marker = L.marker(e.latlng).addTo(map);
+
+            // Menampilkan form untuk input data budaya
+            showBudayaForm(e.latlng);
+        });
+
+        function showBudayaForm(latlng) {
+            // Menampilkan form input data budaya
+            var form = document.getElementById('/budaya/store');
+            form.style.display = 'block';
+
+            // Mengisi input latitude dan longitude pada form
+            form.latitude.value = latlng.lat;
+            form.longitude.value = latlng.lng;
+        }
+
+        function saveBudaya() {
+            // Mengambil data budaya dari form
+            var form = document.getElementById('/budaya/store');
+            var namaBudaya = form.nama_budaya.value;
+            var deskripsi = form.deskripsi.value;
+            var pengelola = form.pengelola.value;
+            var kategori = form.kategori.value;
+            var foto = form.foto.value;
+            var latitude = form.latitude.value;
+            var longitude = form.longitude.value;
+
+            // Mengirim data budaya dan marker ke server
+            $.ajax({
+                url: '/budaya/store',
+                method: 'POST',
+                data: {
+                    nama_budaya: namaBudaya,
+                    deskripsi: deskripsi,
+                    pengelola: pengelola,
+                    kategori: kategori,
+                    foto: foto,
+                    latitude: latitude,
+                    longitude: longitude
+                },
+                success: function(response) {
+                    // Tanggapan dari server
+                    console.log(response);
+
+                    // Menyembunyikan form
+                    form.style.display = 'none';
+                },
+                error: function(xhr, status, error) {
+                    // Penanganan kesalahan
+                    console.log(error);
+                }
+            });
+        }    
     </script>
+                                   
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">

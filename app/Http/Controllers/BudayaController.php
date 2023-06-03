@@ -8,13 +8,31 @@ use Illuminate\Http\Request;
 class BudayaController extends Controller
 {
     public function index (){
+
+        $budayas = BudayaModel::all();
+
+         // Mengambil semua nilai latitude dan longitude dari budayas
+        $coordinates = $budayas->map(function ($budaya) {
+            return [
+                'latitude' => $budaya->latitude,
+                'longitude' => $budaya->longitude,
+            ];
+        });
         
-        return view('pages.budaya', [
+        return view('pages.budaya.budaya', [
             'titel'     => 'Budaya',
-            'budayas'   => BudayaModel::all()
+            'budayas'   => $budayas,
+            'coordinates'=> $coordinates,
         ]);
     }
 
+    public function create()
+    {
+        return view('pages.budaya.add-budaya', [
+            'titel'     => 'Tambah Budaya',
+            'budayas'   => BudayaModel::all()
+        ]);
+    }
     public function store(Request $request)
     {
         // Validasi input dari request jika diperlukan
@@ -33,5 +51,45 @@ class BudayaController extends Controller
         BudayaModel::create($validatedData);
 
         return redirect('/budaya')->with('success', 'Data Budaya Berhasil Disimpan!');
+    }
+
+    public function edit($id)
+    {
+        return view('pages.budaya.edit-budaya',[
+            'titel'     => 'Edit Budaya',
+            'budaya'   => BudayaModel::findOrFail($id)
+        ]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        // Validasi input dari request jika diperlukan
+        $validatedData = $request->validate([
+            'nama_budaya' => 'required|max:30',
+            'deskripsi' => 'required',
+            'pengelola' => 'required|max:60',
+            'kategori' => 'required|max:20',
+            'foto' => 'required|max:20',
+            'htm' => 'required|integer',
+            'latitude' => 'required|numeric',
+            'longitude' => 'required|numeric',
+        ]);
+
+        $budaya = BudayaModel::find($id);
+    
+        if (!$budaya) {
+            return redirect('/budaya')->with('error', 'Data Budaya Tidak Ditemukan!');
+        }
+        
+        $budaya->save($validatedData);
+
+        return redirect('/budaya')->with('success', 'Data Budaya Berhasil Diperbarui!');
+    }
+
+    public function destroy ($id)
+    {
+        BudayaModel::where('id_budaya', $id)->delete();
+
+        return redirect('/budaya')->with('success', 'Data Budaya Berhasil Dihapus!');
     }
 }
