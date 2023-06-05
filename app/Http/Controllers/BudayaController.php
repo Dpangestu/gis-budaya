@@ -81,7 +81,7 @@ class BudayaController extends Controller
             return redirect('/budaya')->with('error', 'Data Budaya Tidak Ditemukan!');
         }
         
-        $budaya->save($validatedData);
+        $budaya->update($validatedData);
 
         return redirect('/budaya')->with('success', 'Data Budaya Berhasil Diperbarui!');
     }
@@ -91,5 +91,20 @@ class BudayaController extends Controller
         BudayaModel::where('id_budaya', $id)->delete();
 
         return redirect('/budaya')->with('success', 'Data Budaya Berhasil Dihapus!');
+    }
+
+    public function saveMarker(Request $request)
+    {
+        $latitude = $request->input('latitude');
+        $longitude = $request->input('longitude');
+
+        // Simpan data ke dalam database
+        $budaya = new BudayaModel;
+        $budaya->latitude = $latitude;
+        $budaya->longitude = $longitude;
+        // Lakukan pengisian data lainnya sesuai kebutuhan
+        $budaya->save();
+
+        return response()->json(['message' => 'Marker berhasil disimpan']);
     }
 }

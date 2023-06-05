@@ -27,6 +27,7 @@ Route::controller(BudayaController::class)->group(function () {
     Route::get('/budaya', 'index');
     Route::get('/budaya/create', 'create');
     Route::post('/budaya/store', 'store');
+    Route::post('/save-marker', 'saveMarker');
     Route::get('/budaya/edit/{id}', 'edit');
     Route::post('/budaya/update/{id}', 'update');
     Route::delete('/budaya/destroy/{id}', 'destroy');

@@ -19,7 +19,7 @@
     <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"></script>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
-    integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
     <script nonce="5082becc-93ea-4fad-9871-bb21608831d6">
         (function(w, d) {
@@ -102,8 +102,8 @@
         @include('layouts.partial.sidebar')
 
         <div class="content-wrapper">
-        {{-- Content --}}
-        @yield('content')
+            {{-- Content --}}
+            @yield('content')
         </div>
 
         <aside class="control-sidebar control-sidebar-dark">
@@ -111,99 +111,11 @@
 
         {{-- Footer --}}
         @include('layouts.partial.footer')
-        
+
     </div>
 
-    <script>
-        var map = L.map('map').setView([-6.7488, 108.5595], 11);
 
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
-        }).addTo(map);
 
-        // Mendefinisikan batas-batas geografis Kabupaten Cirebon
-        var bounds = [
-        [-6.9818, 108.2693], // Koordinat sudut barat laut
-        [-6.6661, 108.8244]  // Koordinat sudut tenggara
-        ];
-
-        // Menampilkan polygon Kabupaten Cirebon
-        L.polygon([
-        bounds,
-        [[-6.8158, 108.6808], [-6.6693, 108.6121], [-6.6709, 108.7408], [-6.7939, 108.8068], [-6.8645, 108.7268], [-6.8158, 108.6808]]
-        ]).addTo(map);
-
-        // Menampilkan batas-batas geografis Kabupaten Cirebon pada peta
-        map.fitBounds(bounds);
-
-        // Menampilkan Marker
-        @foreach($coordinates as $coordinate)
-            var marker = L.marker([{{ $coordinate['latitude'] }}, {{ $coordinate['longitude'] }}]).addTo(map);
-            marker.bindPopup('{{ $coordinate['latitude'] }}'); // Ganti "name" dengan kolom yang sesuai di tabel lokasi
-        @endforeach
-
-        //Menambahakan Marker
-        var marker;
-
-        map.on('click', function(e) {
-            if (marker) {
-                map.removeLayer(marker);
-            }
-            marker = L.marker(e.latlng).addTo(map);
-
-            // Menampilkan form untuk input data budaya
-            showBudayaForm(e.latlng);
-        });
-
-        function showBudayaForm(latlng) {
-            // Menampilkan form input data budaya
-            var form = document.getElementById('/budaya/store');
-            form.style.display = 'block';
-
-            // Mengisi input latitude dan longitude pada form
-            form.latitude.value = latlng.lat;
-            form.longitude.value = latlng.lng;
-        }
-
-        function saveBudaya() {
-            // Mengambil data budaya dari form
-            var form = document.getElementById('/budaya/store');
-            var namaBudaya = form.nama_budaya.value;
-            var deskripsi = form.deskripsi.value;
-            var pengelola = form.pengelola.value;
-            var kategori = form.kategori.value;
-            var foto = form.foto.value;
-            var latitude = form.latitude.value;
-            var longitude = form.longitude.value;
-
-            // Mengirim data budaya dan marker ke server
-            $.ajax({
-                url: '/budaya/store',
-                method: 'POST',
-                data: {
-                    nama_budaya: namaBudaya,
-                    deskripsi: deskripsi,
-                    pengelola: pengelola,
-                    kategori: kategori,
-                    foto: foto,
-                    latitude: latitude,
-                    longitude: longitude
-                },
-                success: function(response) {
-                    // Tanggapan dari server
-                    console.log(response);
-
-                    // Menyembunyikan form
-                    form.style.display = 'none';
-                },
-                error: function(xhr, status, error) {
-                    // Penanganan kesalahan
-                    console.log(error);
-                }
-            });
-        }    
-    </script>
-                                   
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
