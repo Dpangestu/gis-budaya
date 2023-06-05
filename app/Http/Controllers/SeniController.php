@@ -2,13 +2,95 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\SeniModel;
 use Illuminate\Http\Request;
 
 class SeniController extends Controller
 {
     public function index (){
-        return view('pages/seni', [
+
+        $senis = SeniModel::all();
+        
+        // Mengambil semua nilai latitude dan longitude dari budayas
+        $coordinates = $senis->map(function ($budaya) {
+            return [
+                'latitude' => $budaya->latitude,
+                'longitude' => $budaya->longitude,
+            ];
+        });
+
+        return view('pages.seni.seni', [
             'titel'     => 'Seni',
+            'senis'   => $senis,
+            'coordinates'=> $coordinates,
         ]);
+    }
+
+    public function create()
+    {
+        return view('pages.seni.add-seni', [
+            'titel'     => 'Tambah Seni',
+            'budayas'   => SeniModel::all()
+        ]);
+    }
+
+    public function store (Request $request)
+    {
+         $validatedData = $request->validate([
+            'nama_seni' => 'required|max:30',
+            'deskripsi' => 'required',
+            'pengelola' => 'required|max:60',
+            'kategori' => 'required|max:20',
+            'foto' => 'required|max:20',
+            'htm' => 'required|integer',
+            'latitude' => 'required|numeric',
+            'longitude' => 'required|numeric',
+        ]);
+
+        // Buat entitas Seni baru dengan data yang valid
+        SeniModel::create($validatedData);
+
+        return redirect('/seni')->with('success', 'Data Seni Berhasil Disimpan!');
+    }
+
+    public function edit($id)
+    {
+        return view('pages.seni.edit-seni',[
+            'titel'     => 'Edit Seni',
+            'budaya'   => SeniModel::findOrFail($id)
+        ]);
+
+    }
+
+    public function update(Request $request, $id)
+    {
+        // Validasi input dari request jika diperlukan
+        $validatedData = $request->validate([
+            'nama_seni' => 'required|max:30',
+            'deskripsi' => 'required',
+            'pengelola' => 'required|max:60',
+            'kategori' => 'required|max:20',
+            'foto' => 'required|max:20',
+            'htm' => 'required|integer',
+            'latitude' => 'required|numeric',
+            'longitude' => 'required|numeric',
+        ]);
+
+        $seni = SeniModel::find($id);
+    
+        if (!$seni) {
+            return redirect('/seni')->with('error', 'Data Seni Tidak Ditemukan!');
+        }
+        
+        $seni->update($validatedData);
+
+        return redirect('/seni')->with('success', 'Data Seni Berhasil Diperbarui!');
+    }
+
+    public function destroy ($id)
+    {
+        SeniModel::where('id_seni', $id)->delete();
+
+        return redirect('/seni')->with('success', 'Data Seni Berhasil Dihapus!');
     }
 }

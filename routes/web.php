@@ -36,6 +36,12 @@ Route::controller(BudayaController::class)->group(function () {
 
 Route::controller(SeniController::class)->group(function () {
     Route::get('/seni', 'index');
+    Route::get('/seni/create', 'create');
+    Route::post('/seni/store', 'store');
+    Route::post('/save-marker', 'saveMarker');
+    Route::get('/seni/edit/{id}', 'edit');
+    Route::post('/seni/update/{id}', 'update');
+    Route::delete('/seni/destroy/{id}', 'destroy');
 });
 
 Route::controller(PengajuanController::class)->group(function () {
