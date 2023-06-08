@@ -69,9 +69,9 @@ Route::controller(KomentarController::class)->group(function () {
     Route::get('/komentar', 'index');
 });
 
-Route::group(['prefix' => 'admin','middleware' => ['auth'], 'as' => 'admin'],function (){
-    Route::get('/dashboard', [DashboardController::class, 'index']);
-});
+// Route::group(['prefix' => 'admin','middleware' => ['auth'], 'as' => 'admin'],function (){
+//     Route::get('/dashboard', [DashboardController::class, 'index']);
+// });
 
 // Route::middleware(['web','guest'])->group(function () {
 //     Route::get('/login', [LoginController::class, 'index'])->name('login');
@@ -79,7 +79,7 @@ Route::group(['prefix' => 'admin','middleware' => ['auth'], 'as' => 'admin'],fun
 //     Route::post('/logout', [LoginController::class, 'logout']);
 // });
 
-// Route::get('/dashboard', [DashboardController::class, 'index']);
+Route::get('/dashboard', [DashboardController::class, 'index']);
 
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware(['guest']);
 Route::post('/login', [LoginController::class, 'authenticate']);
