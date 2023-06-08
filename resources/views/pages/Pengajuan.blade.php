@@ -72,6 +72,7 @@
                                         <th>Nama Seni/Sanggar</th>
                                         <th>Pengelola</th>
                                         <th>Diajukan Oleh</th>
+                                        <th>Status</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -83,7 +84,8 @@
                                         <td>Keraton Keprabonan</td>
                                         <td>Imam</td>
                                         <td>Imam</td>
-                                        <td>
+                                        <td class="text-center"><button type="button" class="btn btn-success">DITERIMA</button></td> 
+                                        <td class="text-center">
                                             <button type="button" class="btn btn-primary btn-sm mx-1" href="#"><i class="fas fa-search"></i></button>
                                             <a class="btn btn-success btn-sm mx-1" href=""><i class="fas fa-check"></i></a>
                                             <button type="button" class="btn btn-danger btn-sm mx-1" href="#"><i class="fas fa-x"></i></button>
@@ -95,10 +97,11 @@
                                         <td>Sanggar Seni Putu Panji Asmara</td>
                                         <td>Wira</td>
                                         <td>Wira</td>
-                                        <td>
+                                        <td class="text-center"><button type="button" class="btn btn-danger">DITOLAK</button></td>
+                                        <td class="text-center">
                                             <button type="button" class="btn btn-primary btn-sm mx-1" href="#"><i class="fas fa-search"></i></button>
-                                            <a class="btn btn-warning btn-sm mx-1" href=""><i class="fas fa-pencil-alt"></i></a>
-                                            <button type="button" class="btn btn-danger btn-sm mx-1" href="#"><i class="fas fa-trash"></i></button>
+                                            <a class="btn btn-warning btn-sm mx-1" href=""><i class="fas fa-check"></i></a>
+                                            <button type="button" class="btn btn-danger btn-sm mx-1" href="#"><i class="fas fa-x"></i></button>
                                         </td>
                                     </tr>
                                 </tbody>

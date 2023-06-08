@@ -85,3 +85,14 @@ Route::get('/dashboard', [DashboardController::class, 'index']);
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware(['guest']);
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::get('/logout', [LoginController::class, 'logout']);
+
+Route::controller(JadwalController::class)->group(function () {
+    Route::get('/jadwal', 'index');
+});
+
+Route::controller(UsersController::class)->group(function () {
+    Route::get('/users', 'index');
+});
+    
+Route::get('/dashboard', [DashboardController::class, 'index']);
+
