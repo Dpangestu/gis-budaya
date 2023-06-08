@@ -79,6 +79,7 @@ Route::controller(KomentarController::class)->group(function () {
 //     Route::post('/logout', [LoginController::class, 'logout']);
 // });
 
+// dimas
 Route::get('/dashboard', [DashboardController::class, 'index']);
 
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware(['guest']);
