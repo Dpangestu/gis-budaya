@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SeniController;
 use App\Http\Controllers\BudayaController;
+use App\Http\Controllers\LandingController;
 use App\Http\Controllers\KomentarController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PengajuanController;
@@ -18,10 +19,13 @@ use App\Http\Controllers\PengajuanController;
 |
 */
 
-Route::get('/', function () {
-    return view('landingpage');
-});
+// Route::get('/', function () {
+//     return view('landingpage');
+// });
 
+Route::controller(LandingController::class)->group(function () {
+    Route::get('/', 'index');
+});
 
 Route::controller(BudayaController::class)->group(function () {
     Route::get('/budaya', 'index');
