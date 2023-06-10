@@ -26,11 +26,10 @@ use App\Http\Controllers\RegistController;
 //     return view('landingpage');
 // });
 
-<<<<<<< HEAD
 Route::controller(LandingController::class)->group(function () {
     Route::get('/', 'index');
 });
-=======
+
 // Route::group(['Middleware' => ['auth']], function(){
 //     Route::group(['Middleware' => ['cekLogin=Admin']], function(){
 //         Route::controller(DashboardController::class)->group(function () {
@@ -44,8 +43,6 @@ Route::controller(RegistController::class)->group(function () {
     Route::post('/regist/store', 'store');
 
 });
-
->>>>>>> f099e8a4a713e8f41968a2ad3eda446f3c6d1e07
 
 Route::controller(BudayaController::class)->group(function () {
     Route::get('/budaya', 'index');
@@ -102,4 +99,3 @@ Route::controller(UsersController::class)->group(function () {
 });
     
 Route::get('/dashboard', [DashboardController::class, 'index']);
-
