@@ -4,6 +4,7 @@ use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SeniController;
 use App\Http\Controllers\BudayaController;
+use App\Http\Controllers\LandingController;
 use App\Http\Controllers\KomentarController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
@@ -21,8 +22,12 @@ use App\Http\Controllers\RegistController;
 |
 */
 
-Route::get('/', function () {
-    return view('landingpage');
+// Route::get('/', function () {
+//     return view('landingpage');
+// });
+
+Route::controller(LandingController::class)->group(function () {
+    Route::get('/', 'index');
 });
 
 // Route::group(['Middleware' => ['auth']], function(){
@@ -38,7 +43,6 @@ Route::controller(RegistController::class)->group(function () {
     Route::post('/regist/store', 'store');
 
 });
-
 
 Route::controller(BudayaController::class)->group(function () {
     Route::get('/budaya', 'index');
@@ -95,4 +99,3 @@ Route::controller(UsersController::class)->group(function () {
 });
     
 Route::get('/dashboard', [DashboardController::class, 'index']);
-
