@@ -40,6 +40,7 @@
 </head>
 
 <body>
+<<<<<<< HEAD
 
     <!-- ======= Header ======= -->
     <header id="header" class="fixed-top d-flex align-items-center header-transparent">
@@ -881,6 +882,11 @@
     <!-- Template Main JS File -->
     <script src="{{ asset('assets/js/main.js') }}"></script>
 
+=======
+    <h1>Welcome to bla bla bla</h1>
+    <a href="/dashboard">Dashboard</a>
+    <a href="/login">Login</a>
+>>>>>>> f099e8a4a713e8f41968a2ad3eda446f3c6d1e07
 </body>
 
 </html>
