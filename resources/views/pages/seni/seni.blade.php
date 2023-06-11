@@ -4,13 +4,13 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Seni Cirebon</h1>
+                    <h1 class="m-0">Data Seni Cirebon</h1>
                 </div>
                 <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
+                    {{-- <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
                         <li class="breadcrumb-item active">Dashboard v2</li>
-                    </ol>
+                    </ol> --}}
                 </div>
             </div>
         </div>
@@ -123,12 +123,12 @@
                         </div>
                         <div class="card-body">
                             <div class="card-tools">
-                                <form ng-submit="itemSearch()" class="form-inline" role="form">
+                                <form action="/search" class="form-inline">
                                     <div class="input-group input-group-sm" style="width: 250px;">
                                         <input type="text" name="table_search" class="form-control float-right"
-                                            placeholder="Search" [(ngModel)]="searchText">
+                                            placeholder="Search">
                                         <div class="input-group-append">
-                                            <button type="submit" class="btn btn-default" (click)="itemSearch()">
+                                            <button type="submit" class="btn btn-default">
                                                 <i class="fas fa-search"></i>
                                             </button>
                                         </div>

@@ -52,7 +52,6 @@ Route::controller(BudayaController::class)->group(function () {
     Route::get('/budaya/edit/{id}', 'edit');
     Route::post('/budaya/update/{id}', 'update');
     Route::delete('/budaya/destroy/{id}', 'destroy');
-
 });
 
 Route::controller(SeniController::class)->group(function () {
@@ -73,9 +72,6 @@ Route::controller(KomentarController::class)->group(function () {
     Route::get('/komentar', 'index');
 });
 
-// Route::group(['prefix' => 'admin','middleware' => ['auth'], 'as' => 'admin'],function (){
-//     Route::get('/dashboard', [DashboardController::class, 'index']);
-// });
 
 // Route::middleware(['web','guest'])->group(function () {
 //     Route::get('/login', [LoginController::class, 'index'])->name('login');
@@ -84,7 +80,7 @@ Route::controller(KomentarController::class)->group(function () {
 // });
 
 // dimas
-Route::get('/dashboard', [DashboardController::class, 'index']);
+// Route::get('/dashboard', [DashboardController::class, 'index']);
 
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware(['guest']);
 Route::post('/login', [LoginController::class, 'authenticate']);
@@ -97,5 +93,9 @@ Route::controller(JadwalController::class)->group(function () {
 Route::controller(UsersController::class)->group(function () {
     Route::get('/users', 'index');
 });
-    
-Route::get('/dashboard', [DashboardController::class, 'index']);
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
+
+// Route::group(['prefix' => 'admin','middleware' => ['auth'], 'as' => 'admin'],function (){
+//     Route::get('/dashboard', [DashboardController::class, 'index']);
+// });

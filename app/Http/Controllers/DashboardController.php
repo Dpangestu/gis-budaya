@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\BudayaModel;
-// use App\Models\SeniModel;
+use App\Models\SeniModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -24,10 +24,12 @@ class DashboardController extends Controller
         // }
 
         $budayas = BudayaModel::count();
+        $senis = SeniModel::count();
 
         return view('dashboard', [
             'titel'     => 'Dashboard',
             'budayas'   => $budayas,
+            'senis'   => $senis,
             // 'name'      => $name
         ]);
     }
