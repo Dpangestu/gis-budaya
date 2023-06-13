@@ -164,8 +164,8 @@
                                             <td>{{ $item->pengelola }}</td>
                                             <td>{{ $item->kategori }}</td>
                                             <td>
-                                                <button type="button" class="btn btn-primary btn-sm mx-1" href="#"><i
-                                                        class="fas fa-search"></i></button>
+                                                <a class="btn btn-primary btn-sm mx-1"
+                                                    href="/seni/show/{{ $item->id_seni }}"><i class="fas fa-search"></i></a>
                                                 <a class="btn btn-warning btn-sm mx-1"
                                                     href="/seni/edit/{{ $item->id_seni }}"><i
                                                         class="fas fa-pencil-alt"></i></a>

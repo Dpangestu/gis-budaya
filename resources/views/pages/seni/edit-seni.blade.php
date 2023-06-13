@@ -15,7 +15,7 @@
     <section class="content">
         <div class="conter-fluid">
             @if (session()->has('error'))
-                <div class="alert alert-success" id="error-flash" role="alert">
+                <div class="alert alert-denger" id="error-flash" role="alert">
                     {{ session('error') }}
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>

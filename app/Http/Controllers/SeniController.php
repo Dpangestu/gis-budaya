@@ -53,11 +53,19 @@ class SeniController extends Controller
 
         return redirect('/seni')->with('success', 'Data Seni Berhasil Disimpan!');
     }
+    
+    public function show($id)
+    {
+        return view('pages.seni.detail-seni', [
+            'titel' => 'Detail Seni',
+            'seni' => SeniModel::findOrFail($id),
+        ]);
 
+    }
     public function edit($id)
     {
         return view('pages.seni.edit-seni',[
-            'titel'     => 'Edit Seni',
+            'titel'  => 'Edit Seni',
             'seni'   => SeniModel::findOrFail($id)
         ]);
 

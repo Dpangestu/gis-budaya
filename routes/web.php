@@ -58,6 +58,7 @@ Route::controller(SeniController::class)->group(function () {
     Route::get('/seni', 'index');
     Route::get('/seni/create', 'create');
     Route::post('/seni/store', 'store');
+    Route::get('/seni/show/{id}', 'show');
     Route::post('/save-marker', 'saveMarker');
     Route::get('/seni/edit/{id}', 'edit');
     Route::post('/seni/update/{id}', 'update');
