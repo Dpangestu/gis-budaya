@@ -14,10 +14,16 @@
 
     <section class="content">
         <div class="conter-fluid">
-            <div class="card">
-                <div class="card-header">
-
+            @if (session()->has('error'))
+                <div class="alert alert-success" id="error-flash" role="alert">
+                    {{ session('error') }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
+            @endif
+            <div class="card">
+
                 <div class="card-body table-responsive p-0">
                     <div class="card-body">
                         <form action="/budaya/store" method="post">

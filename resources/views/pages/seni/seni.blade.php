@@ -6,12 +6,7 @@
                 <div class="col-sm-6">
                     <h1 class="m-0">Data Seni Cirebon</h1>
                 </div>
-                <div class="col-sm-6">
-                    {{-- <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Dashboard v2</li>
-                    </ol> --}}
-                </div>
+
             </div>
         </div>
     </section>
@@ -172,7 +167,7 @@
                                                 <button type="button" class="btn btn-primary btn-sm mx-1" href="#"><i
                                                         class="fas fa-search"></i></button>
                                                 <a class="btn btn-warning btn-sm mx-1"
-                                                    href="/budaya/edit/{{ $item->id_seni }}"><i
+                                                    href="/seni/edit/{{ $item->id_seni }}"><i
                                                         class="fas fa-pencil-alt"></i></a>
                                                 <button type="submit" class="btn btn-danger btn-sm mx-1"
                                                     data-toggle="modal"

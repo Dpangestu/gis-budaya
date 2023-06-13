@@ -1,9 +1,9 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
 
     <a href="index3.html" class="brand-link">
-        <img src="{{ asset('tamplate/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-            style="opacity: .8">
-        <span class="brand-text font-weight-light">{{config('app.name')}}</span>
+        <img src="{{ asset('tamplate/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
+            class="brand-image img-circle elevation-3" style="opacity: .8">
+        <span class="brand-text font-weight-light">{{ config('app.name') }}</span>
     </a>
 
     <br>
@@ -27,51 +27,59 @@
                 data-accordion="false">
 
                 <li class="nav-item">
-                    <a href="/dashboard" class="nav-link {{ ($titel === "Dashboard") ? 'active' : '' }}">
+                    <a href="/dashboard" class="nav-link {{ $titel === 'Dashboard' ? 'active' : '' }}">
                         <i class="nav-icon fas fa-th"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a href="/seni" class="nav-link {{ ($titel === "Seni") ? 'active' : '' }}">
+                    <a href="/seni" class="nav-link {{ $titel === 'Seni' ? 'active' : '' }}">
                         <i class="nav-icon fas fa-palette"></i>
                         <p>Data Seni</p>
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a href="/budaya" class="nav-link {{ ($titel === "Budaya") ? 'active' : '' }}">
+                    <a href="/budaya" class="nav-link {{ $titel === 'Budaya' ? 'active' : '' }}">
                         <i class="nav-icon fas fa-mask"></i>
                         <p>Data Budaya</p>
                     </a>
                 </li>
-                
+
                 <li class="nav-item">
-                    <a href="/pengajuan" class="nav-link {{ ($titel === "Pengajuan Data") ? 'active' : '' }}">
+                    <a href="/pengajuan" class="nav-link {{ $titel === 'Pengajuan Data' ? 'active' : '' }}">
                         <i class="nav-icon fas fa-file"></i>
                         <p>Pengajuan Data</p>
                     </a>
                 </li>
-                
+
                 <li class="nav-item">
-                    <a href="/komentar" class="nav-link {{ ($titel === "Komentar") ? 'active' : '' }}">
+                    <a href="/komentar" class="nav-link {{ $titel === 'Komentar' ? 'active' : '' }}">
                         <i class="nav-icon fas fa-comments"></i>
                         <p>Komentar</p>
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a href="/Jadwal" class="nav-link {{ ($titel === "Jadwal Event") ? 'active' : '' }}">
+                    <a href="/Jadwal" class="nav-link {{ $titel === 'Jadwal Event' ? 'active' : '' }}">
                         <i class="nav-icon fas fa-calendar"></i>
                         <p>Jadwal Event</p>
                     </a>
                 </li>
-                
+
                 <li class="nav-item">
-                    <a href="/Users" class="nav-link {{ ($titel === "Kelola Users") ? 'active' : '' }}">
+                    <a href="/Users" class="nav-link {{ $titel === 'Kelola Users' ? 'active' : '' }}">
                         <i class="nav-icon fas fa-users"></i>
                         <p>Kelola Users</p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="/pengajuanK"
+                        class="nav-link {{ $titel === 'Pengajuan Data Kontributor' ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-file"></i>
+                        <p>Pengajuan Data (Kontributor)</p>
                     </a>
                 </li>
             </ul>

@@ -66,21 +66,16 @@ Route::controller(SeniController::class)->group(function () {
 
 Route::controller(PengajuanController::class)->group(function () {
     Route::get('/pengajuan', 'index');
+    Route::get('/pengajuanK', 'pengajuanK');
+    Route::get('/pengajuan/create', 'create');
+    Route::post('/pengajuan/store', 'store');
+    Route::post('/pengajuan/{id}/approve', 'approve')->name('pengajuan.approve');
+    Route::post('/pengajuan/{id}/reject', 'reject')->name('pengajuan.rejected');
 });
 
 Route::controller(KomentarController::class)->group(function () {
     Route::get('/komentar', 'index');
 });
-
-
-// Route::middleware(['web','guest'])->group(function () {
-//     Route::get('/login', [LoginController::class, 'index'])->name('login');
-//     Route::post('/login', [LoginController::class, 'authenticate']);
-//     Route::post('/logout', [LoginController::class, 'logout']);
-// });
-
-// dimas
-// Route::get('/dashboard', [DashboardController::class, 'index']);
 
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware(['guest']);
 Route::post('/login', [LoginController::class, 'authenticate']);
@@ -94,7 +89,7 @@ Route::controller(UsersController::class)->group(function () {
     Route::get('/users', 'index');
 });
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
+Route::get('/dashboard', [DashboardController::class, 'index']);
 
 // Route::group(['prefix' => 'admin','middleware' => ['auth'], 'as' => 'admin'],function (){
 //     Route::get('/dashboard', [DashboardController::class, 'index']);

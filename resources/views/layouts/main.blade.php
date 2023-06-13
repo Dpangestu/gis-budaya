@@ -88,7 +88,7 @@
     </script>
 </head>
 
-<body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
     <div class="wrapper">
 
         {{-- <div class="preloader flex-column justify-content-center align-items-center">
@@ -113,15 +113,6 @@
         @include('layouts.partial.footer')
 
     </div>
-
-<<<<<<< HEAD
-
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-=======
-    {{-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
->>>>>>> f099e8a4a713e8f41968a2ad3eda446f3c6d1e07
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-    </script> --}}
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
@@ -156,6 +147,11 @@
             var successFlash = document.getElementById('success-flash');
             if (successFlash) {
                 successFlash.style.display = 'none';
+            }
+
+            var errorFlash = document.getElementById('error-flash');
+            if (errorFlash) {
+                errorFlash.style.display = 'none';
             }
         }, 3000);
     </script>

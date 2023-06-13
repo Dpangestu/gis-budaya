@@ -14,6 +14,14 @@
 
     <section class="content">
         <div class="conter-fluid">
+            @if (session()->has('error'))
+                <div class="alert alert-success" id="error-flash" role="alert">
+                    {{ session('error') }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            @endif
             <div class="card">
                 <div class="card-body table-responsive p-0">
                     <div class="card-body">
@@ -22,7 +30,7 @@
                             <div class="form-group">
                                 <label for="nama_seni">Nama Seni</label>
                                 <input type="text" class="form-control" value="{{ $seni->nama_seni }}"
-                                    @error('nama_seni') is invalid @enderror id="nama_budaya" name="nama_budaya" required>
+                                    @error('nama_seni') is invalid @enderror id="nama_seni" name="nama_seni" required>
                                 @error('nama_seni')
                                     <div class="invalid-feedback">
                                         {{ $message }}

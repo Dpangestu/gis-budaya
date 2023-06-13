@@ -10,7 +10,7 @@ class SeniModel extends Model
     use HasFactory;
 
     protected $table = 'seni';
-    protected $primaryKey = 'id_budaya';
+    protected $primaryKey = 'id_seni';
 
     protected $fillable = [
         'nama_seni',

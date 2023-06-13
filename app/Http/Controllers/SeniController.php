@@ -8,14 +8,15 @@ use Illuminate\Http\Request;
 class SeniController extends Controller
 {
     public function index (){
+        
 
         $senis = SeniModel::all();
         
-        // Mengambil semua nilai latitude dan longitude dari budayas
-        $coordinates = $senis->map(function ($budaya) {
+        // Mengambil semua nilai latitude dan longitude dari senis
+        $coordinates = $senis->map(function ($seni) {
             return [
-                'latitude' => $budaya->latitude,
-                'longitude' => $budaya->longitude,
+                'latitude' => $seni->latitude,
+                'longitude' => $seni->longitude,
             ];
         });
 
@@ -30,7 +31,7 @@ class SeniController extends Controller
     {
         return view('pages.seni.add-seni', [
             'titel'     => 'Tambah Seni',
-            'budayas'   => SeniModel::all()
+            'senis'   => SeniModel::all()
         ]);
     }
 
@@ -57,7 +58,7 @@ class SeniController extends Controller
     {
         return view('pages.seni.edit-seni',[
             'titel'     => 'Edit Seni',
-            'budaya'   => SeniModel::findOrFail($id)
+            'seni'   => SeniModel::findOrFail($id)
         ]);
 
     }
@@ -93,4 +94,20 @@ class SeniController extends Controller
 
         return redirect('/seni')->with('success', 'Data Seni Berhasil Dihapus!');
     }
+
+    public function search(Request $request)
+    {
+        $searchText = $request->input('search_text');
+
+        $senis = SeniModel::where('nama_seni', 'LIKE', "%$searchText%")
+            ->orWhere('pengelola', 'LIKE', "%$searchText%")
+            ->orWhere('kategori', 'LIKE', "%$searchText%")
+            ->get();
+
+        return view('pages.seni.seni', [
+            'titel' => 'Seni',
+            'senis' => $senis,
+        ]);
+    }
+
 }
