@@ -107,4 +107,19 @@ class BudayaController extends Controller
 
         return response()->json(['message' => 'Marker berhasil disimpan']);
     }
+
+    public function search(Request $request)
+    {
+        $searchText = $request->input('search_text');
+
+        $budayas = BudayaModel::where('nama_budaya', 'LIKE', "%$searchText%")
+            ->orWhere('pengelola', 'LIKE', "%$searchText%")
+            ->orWhere('kategori', 'LIKE', "%$searchText%")
+            ->get();
+
+        return view('pages.budaya.budaya', [
+            'titel' => 'Budaya',
+            'budayas' => $budayas,
+        ]);
+    }
 }

@@ -106,4 +106,19 @@ class PengajuanController extends Controller
         // ...
         return redirect()->back()->with('success', 'Pengajuan telah ditolak!');
     }
+
+    public function search(Request $request)
+    {
+        $searchText = $request->input('search_text');
+
+        $pengajuans = PengajuanModel::where('nama_data', 'LIKE', "%$searchText%")
+            ->orWhere('pengelola', 'LIKE', "%$searchText%")
+            ->orWhere('kategori', 'LIKE', "%$searchText%")
+            ->get();
+
+        return view('pages.pengajuan.pengajuan', [
+            'titel' => 'Pengajuan Data',
+            'pengajuans' => $pengajuans,
+        ]);
+    }
 }

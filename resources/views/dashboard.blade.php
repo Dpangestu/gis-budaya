@@ -50,8 +50,8 @@
                 <div class="col-lg-3 col-6">
                     <div class="small-box bg-warning">
                         <div class="inner">
-                            <h3>0</h3>
-                            <p>Pengajuan</p>
+                            <h3>{{ $pengajuans }}</h3>
+                            <p>Pengajuan Data</p>
                         </div>
                         <div class="icon">
                             <i class="fas fa-file"></i>

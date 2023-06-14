@@ -118,12 +118,12 @@
                         </div>
                         <div class="card-body">
                             <div class="card-tools">
-                                <form ng-submit="itemSearch()" class="form-inline" role="form">
+                                <form action="/budaya/search" class="form-inline">
                                     <div class="input-group input-group-sm" style="width: 250px;">
-                                        <input type="text" name="table_search" class="form-control float-right"
-                                            placeholder="Search" [(ngModel)]="searchText">
+                                        <input type="text" name="search_text" class="form-control float-right"
+                                            placeholder="Search" value="{{ $searchText ?? '' }}">
                                         <div class="input-group-append">
-                                            <button type="submit" class="btn btn-default" (click)="itemSearch()">
+                                            <button type="submit" class="btn btn-default">
                                                 <i class="fas fa-search"></i>
                                             </button>
                                         </div>

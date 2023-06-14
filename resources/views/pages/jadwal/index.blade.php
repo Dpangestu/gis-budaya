@@ -4,13 +4,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Pengajuan Data Situs Seni Budaya</h1>
-                </div>
-                <div class="col-sm-6">
-                    {{-- <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">Dashboard v2</li>
-                </ol> --}}
+                    <h1 class="m-0">Jadwal Event</h1>
                 </div>
             </div>
         </div>
@@ -24,7 +18,7 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Data Pengajuan</h3>
+                            <h3 class="card-title">Data Jadwal Event</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                     <i class="fas fa-minus"></i>
@@ -38,19 +32,19 @@
 
                         <div class="card-body">
                             {{-- form search dan data add --}}
-                            <form ng-submit="itemSearch()" class="form-inline" role="form">
+                            <form action="/jadwal/search" class="form-inline">
                                 <div class="input-group input-group-sm" style="width: 250px;">
-                                    <input type="text" name="table_search" class="form-control float-right"
-                                        placeholder="Search" [(ngModel)]="searchText">
+                                    <input type="text" name="search_text" class="form-control float-right"
+                                        placeholder="Search" value="{{ $searchText ?? '' }}">
                                     <div class="input-group-append">
-                                        <button type="submit" class="btn btn-default" (click)="itemSearch()">
+                                        <button type="submit" class="btn btn-default">
                                             <i class="fas fa-search"></i>
                                         </button>
                                     </div>
                                 </div>
                                 &nbsp;
                                 <div class="input-group-append">
-                                    <a class="btn btn-info btn-sm" href="">
+                                    <a class="btn btn-info btn-sm" href="/jadwal/create">
                                         <i class="fas fa-plus-circle"></i>
                                     </a>
                                 </div>
@@ -69,10 +63,9 @@
 
                                     <tr class="bg-primary" style="text-align: center">
                                         <th style="width: 50px;">No</th>
-                                        <th>Nama Seni/Sanggar</th>
-                                        <th>Pengelola</th>
-                                        <th>Diajukan Oleh</th>
-                                        <th>Status</th>
+                                        <th>Nama</th>
+                                        <th>Situs</th>
+                                        <th style="max-width: 150px">Komentar</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -81,18 +74,16 @@
 
                                     <tr>
                                         <td class="text-center"><?= $i++ ?></td>
-                                        <td>Keraton Keprabonan</td>
                                         <td>Imam</td>
-                                        <td>Imam</td>
-                                        <td class="text-center"><button type="button"
-                                                class="btn btn-success">DITERIMA</button></td>
-                                        <td class="text-center">
+                                        <td>Makam Sunan Gunung Jati</td>
+                                        <td>baru mengetahui makam sunan gunung jati</td>
+                                        <td>
                                             <button type="button" class="btn btn-primary btn-sm mx-1" href="#"><i
                                                     class="fas fa-search"></i></button>
                                             <a class="btn btn-success btn-sm mx-1" href=""><i
-                                                    class="fas fa-check"></i></a>
+                                                    class="fas fa-message"></i></a>
                                             <button type="button" class="btn btn-danger btn-sm mx-1" href="#"><i
-                                                    class="fas fa-x"></i></button>
+                                                    class="fas fa-trash"></i></button>
                                         </td>
                                     </tr>
 
@@ -101,15 +92,13 @@
                                         <td>Sanggar Seni Putu Panji Asmara</td>
                                         <td>Wira</td>
                                         <td>Wira</td>
-                                        <td class="text-center"><button type="button"
-                                                class="btn btn-danger">DITOLAK</button></td>
-                                        <td class="text-center">
+                                        <td>
                                             <button type="button" class="btn btn-primary btn-sm mx-1" href="#"><i
                                                     class="fas fa-search"></i></button>
-                                            <a class="btn btn-warning btn-sm mx-1" href=""><i
-                                                    class="fas fa-check"></i></a>
+                                            <a class="btn btn-success btn-sm mx-1" href=""><i
+                                                    class="fas fa-message"></i></a>
                                             <button type="button" class="btn btn-danger btn-sm mx-1" href="#"><i
-                                                    class="fas fa-x"></i></button>
+                                                    class="fas fa-trash"></i></button>
                                         </td>
                                     </tr>
                                 </tbody>

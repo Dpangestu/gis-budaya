@@ -46,7 +46,7 @@
 
                         <div class="card-body">
                             {{-- form search dan data add --}}
-                            <form action="/budaya/search" class="form-inline">
+                            <form action="/pengajuan/search" class="form-inline">
                                 <div class="input-group input-group-sm" style="width: 250px;">
                                     <input type="text" name="search_text" class="form-control float-right"
                                         placeholder="Search" value="{{ $searchText ?? '' }}">
