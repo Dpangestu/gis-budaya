@@ -1,5 +1,4 @@
 @extends('layouts.main')
-
 @section('content')
     <section class="content-header">
         <div class="container-fluid">
@@ -13,7 +12,7 @@
     </section>
 
     <section class="content">
-        <div class="conter-fluid">
+        <div class="container-fluid">
             @if (session()->has('error'))
                 <div class="alert alert-danger" id="error-flash" role="alert">
                     {{ session('error') }}
@@ -90,7 +89,6 @@
                                         @enderror
                                     </div>
 
-
                                     <div class="form-group">
                                         <label for="htm">Harga Tiket Masuk</label>
                                         <input type="text" class="form-control" value="{{ old('htm') }}"
@@ -126,8 +124,9 @@
                                     </div>
 
                                     <div class="card-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-primary" onclick="saveSeni()">Simpan</button>
+                                        <a type="button" class="btn btn-secondary" data-dismiss="modal"
+                                            href="/seni">Close</a>
+                                        <button type="submit" class="btn btn-primary float-right">Simpan</button>
                                     </div>
                                 </form>
                             </div>

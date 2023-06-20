@@ -78,11 +78,12 @@ Route::controller(KomentarController::class)->group(function () {
 // Jadwal Event
 Route::controller(JadwalController::class)->group(function () {
     Route::get('/jadwal', 'index');
-    Route::get('/jadwal/create', 'create');
+    Route::get('/jadwal/events', 'events');
     Route::post('/jadwal/store', 'store');
     Route::get('/jadwal/show/{id}', 'show');
     Route::get('/jadwal/search', 'search');
     Route::get('/jadwal/edit/{id}', 'edit');
+    Route::delete('/jadwal/destroy/{id}', 'destroy');
 });
 
 // Users
@@ -99,7 +100,7 @@ Route::controller(RegistController::class)->group(function () {
 });
 
 // Login
-Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware(['guest']);
+Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::get('/logout', [LoginController::class, 'logout']);
 

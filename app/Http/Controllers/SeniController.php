@@ -3,16 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\SeniModel;
+use App\Models\JadwalModel;
 use Illuminate\Http\Request;
 
 class SeniController extends Controller
 {
-    public function index (){
-        
-
+    public function index ()
+    {
         $senis = SeniModel::all();
-        
-        // Mengambil semua nilai latitude dan longitude dari senis
         $coordinates = $senis->map(function ($seni) {
             return [
                 'latitude' => $seni->latitude,
@@ -60,7 +58,6 @@ class SeniController extends Controller
             'titel' => 'Detail Seni',
             'seni' => SeniModel::findOrFail($id),
         ]);
-
     }
     public function edit($id)
     {

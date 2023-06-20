@@ -91,6 +91,34 @@
   }
 }
 
+#external-events {
+  padding: 10px;
+  border: 1px solid #ccc;
+  background: #eee;
+  margin-bottom: 10px;
+}
+
+#external-events h4 {
+  font-size: 16px;
+  margin-top: 0;
+  padding-top: 1em;
+}
+
+.external-event {
+  /* Sesuaikan gaya eksternal acara di sini */
+  margin: 10px 0;
+  padding: 2px 4px;
+  background-color: #337ab7;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+#calendar {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
 body {
   margin: 0;
   font-family: var(--bs-body-font-family);

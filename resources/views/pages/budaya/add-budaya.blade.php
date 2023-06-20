@@ -1,5 +1,4 @@
 @extends('layouts.main')
-
 @section('content')
     <section class="content-header">
         <div class="container-fluid">
@@ -13,7 +12,7 @@
     </section>
 
     <section class="content">
-        <div class="conter-fluid">
+        <div class="container-fluid">
             @if (session()->has('error'))
                 <div class="alert alert-danger" id="error-flash" role="alert">
                     {{ session('error') }}
@@ -22,108 +21,119 @@
                     </button>
                 </div>
             @endif
-            <div class="card">
 
-                <div class="card-body table-responsive p-0">
-                    <div class="card-body">
-                        <form action="/budaya/store" method="post">
-                            @csrf
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
 
-                            <div class="form-group">
-                                <label for="nama_budaya">Nama Budaya</label>
-                                <input type="text" class="form-control" value="{{ old('nama_budaya') }}"
-                                    @error('nama_budaya') is invalid @enderror id="nama_budaya" name="nama_budaya" required>
-                                @error('nama_budaya')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
+                        <div class="card-body table-responsive p-0">
+                            <div class="card-body">
+                                <form action="/budaya/store" method="post">
+                                    @csrf
+
+                                    <div class="form-group">
+                                        <label for="nama_budaya">Nama Budaya</label>
+                                        <input type="text" class="form-control" value="{{ old('nama_budaya') }}"
+                                            @error('nama_budaya') is invalid @enderror id="nama_budaya" name="nama_budaya"
+                                            required>
+                                        @error('nama_budaya')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
                                     </div>
-                                @enderror
-                            </div>
 
-                            <div class="form-group">
-                                <label for="deskripsi">Deskripsi</label>
-                                <input type="text" class="form-control" value="{{ old('deskripsi') }}"
-                                    @error('deskripsi') is invalid @enderror id="deskripsi" name="deskripsi" required>
-                                @error('deskripsi')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
+                                    <div class="form-group">
+                                        <label for="deskripsi">Deskripsi</label>
+                                        <textarea type="text" class="form-control" value="{{ old('deskripsi') }}" @error('deskripsi') is invalid @enderror
+                                            id="deskripsi" name="deskripsi" rows="8" required></textarea>
+                                        @error('deskripsi')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
                                     </div>
-                                @enderror
-                            </div>
 
-                            <div class="form-group">
-                                <label for="pengelola">Pengelola</label>
-                                <input type="text" class="form-control" value="{{ old('pengelola') }}"
-                                    @error('pengelola') is invalid @enderror id="pengelola" name="pengelola" required>
-                                @error('pengelola')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
+                                    <div class="form-group">
+                                        <label for="pengelola">Pengelola</label>
+                                        <input type="text" class="form-control" value="{{ old('pengelola') }}"
+                                            @error('pengelola') is invalid @enderror id="pengelola" name="pengelola"
+                                            required>
+                                        @error('pengelola')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
                                     </div>
-                                @enderror
-                            </div>
 
-                            <div class="form-group">
-                                <label for="kategori">Kategori</label>
-                                <input type="text" class="form-control" value="{{ old('kategori') }}"
-                                    @error('kategori') is invalid @enderror id="kategori" name="kategori" required>
-                                @error('kategori')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
+                                    <div class="form-group">
+                                        <label for="kategori">Kategori</label>
+                                        <input type="text" class="form-control" value="{{ old('kategori') }}"
+                                            @error('kategori') is invalid @enderror id="kategori" name="kategori" required>
+                                        @error('kategori')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
                                     </div>
-                                @enderror
-                            </div>
 
-                            <div class="form-group">
-                                <label for="foto">Foto</label>
-                                <input type="file" class="form-control-file" value="{{ old('foto') }}"
-                                    @error('foto') is invalid @enderror id="foto" name="foto" required>
-                                @error('foto')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
+                                    <div class="form-group">
+                                        <label for="foto">Foto</label>
+                                        <input class="form-control" type="file" value="{{ old('foto') }}"
+                                            @error('foto') is invalid @enderror id="foto" name="foto" required>
+                                        @error('foto')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
                                     </div>
-                                @enderror
-                            </div>
 
-                            <div class="form-group">
-                                <label for="htm">Harga Tiket Masuk</label>
-                                <input type="text" class="form-control" value="{{ old('htm') }}"
-                                    @error('htm') is invalid @enderror id="htm" name="htm" required>
-                                @error('htm')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
+                                    <div class="form-group">
+                                        <label for="htm">Harga Tiket Masuk</label>
+                                        <input type="text" class="form-control" value="{{ old('htm') }}"
+                                            @error('htm') is invalid @enderror id="htm" name="htm" required>
+                                        @error('htm')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
-                                @enderror
-                            </div>
 
-                            <div class="form-group">
-                                <label for="latitude">Latitude</label>
-                                <input type="text" class="form-control" value="{{ old('latitude') }}"
-                                    @error('latitude') is invalid @enderror id="latitude" name="latitude" required>
-                                @error('latitude')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
+                                    <div class="form-group">
+                                        <label for="latitude">Latitude</label>
+                                        <input type="text" class="form-control" value="{{ old('latitude') }}"
+                                            @error('latitude') is invalid @enderror id="latitude" name="latitude" required>
+                                        @error('latitude')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
                                     </div>
-                                @enderror
-                            </div>
 
-                            <div class="form-group">
-                                <label for="longitude">Longitude</label>
-                                <input type="text" class="form-control" value="{{ old('longitude') }}"
-                                    @error('longitude') is invalid @enderror id="longitude" name="longitude" required>
-                                @error('longitude')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
+                                    <div class="form-group">
+                                        <label for="longitude">Longitude</label>
+                                        <input type="text" class="form-control" value="{{ old('longitude') }}"
+                                            @error('longitude') is invalid @enderror id="longitude" name="longitude"
+                                            required>
+                                        @error('longitude')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
                                     </div>
-                                @enderror
+                                    <div class="card-footer">
+                                        <a type="button" class="btn btn-secondary" data-dismiss="modal"
+                                            href="/budaya">Close</a>
+                                        <button type="submit" class="btn btn-primary float-right"
+                                            onclick="saveBudaya()">Simpan</button>
+                                    </div>
+                                </form>
                             </div>
-                            <div class="card-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-primary" onclick="saveBudaya()">Simpan</button>
-                            </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
+
             </div>
+
         </div>
+
     </section>
 @endsection

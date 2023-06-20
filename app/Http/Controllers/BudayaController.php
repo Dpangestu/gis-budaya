@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\BudayaModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
 
 class BudayaController extends Controller
 {
@@ -51,6 +52,14 @@ class BudayaController extends Controller
         BudayaModel::create($validatedData);
 
         return redirect('/budaya')->with('success', 'Data Budaya Berhasil Disimpan!');
+    }
+
+    public function show($id)
+    {
+        return view('pages.budaya.detail-budaya', [
+            'titel' => 'Detail Budaya',
+            'budaya' => BudayaModel::findOrFail($id),
+        ]);
     }
 
     public function edit($id)
@@ -108,18 +117,23 @@ class BudayaController extends Controller
         return response()->json(['message' => 'Marker berhasil disimpan']);
     }
 
-    public function search(Request $request)
-    {
-        $searchText = $request->input('search_text');
+    // public function search(Request $request)
+    // {
+    //     $searchText = $request->input('search_text');
 
-        $budayas = BudayaModel::where('nama_budaya', 'LIKE', "%$searchText%")
-            ->orWhere('pengelola', 'LIKE', "%$searchText%")
-            ->orWhere('kategori', 'LIKE', "%$searchText%")
-            ->get();
+    //     $budayas = BudayaModel::where('nama_budaya', 'LIKE', "%$searchText%")
+    //         ->orWhere('pengelola', 'LIKE', "%$searchText%")
+    //         ->orWhere('kategori', 'LIKE', "%$searchText%")
+    //         ->get();
 
-        return view('pages.budaya.budaya', [
-            'titel' => 'Budaya',
-            'budayas' => $budayas,
-        ]);
-    }
+    //     if ($request->ajax()) {
+    //         $view = View::make('partials.budaya_table', ['budayas' => $budayas])->render();
+    //         return response()->json(['html' => $view]);
+    //     }
+
+    //     return view('pages.budaya.budaya', [
+    //         'titel' => 'Budaya',
+    //         'budayas' => $budayas,
+    //     ]);                                                         
+    // }
 }

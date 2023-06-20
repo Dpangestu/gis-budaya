@@ -15,12 +15,11 @@ return new class extends Migration
             $table->id('id_jadwal');
             $table->string('nama_acara');
             $table->text('deskripsi');
-            $table->foreignId('id_seni')->references('id_seni')->on('seni');
-            $table->foreignId('id_budaya')->references('id_budaya')->on('budaya');
+            $table->foreignId('id_seni')->nullable()->references('id_seni')->on('seni');
+            $table->foreignId('id_budaya')->nullable()->references('id_budaya')->on('budaya');
             $table->dateTime('mulai_acara');
             $table->dateTime('akhir_acara');
-            $table->decimal('latitude', 10, 7)->nullable();
-            $table->decimal('longitude', 10, 7)->nullable();
+            $table->string('warna_acara', 7)->nullable();
             $table->timestamps();
         });
     }

@@ -1,10 +1,10 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
 
-    <a href="index3.html" class="brand-link">
+    <button href="/" class="brand-link">
         <img src="{{ asset('tamplate/dist/img/AdminLTELogo.png') }}" alt="Logo"
             class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light ">{{ config('app.name') }}</span>
-    </a>
+    </button>
 
     <br>
 
@@ -51,6 +51,9 @@
                     <a href="/pengajuan" class="nav-link {{ $titel === 'Pengajuan Data' ? 'active' : '' }}">
                         <i class="nav-icon fas fa-file"></i>
                         <p>Pengajuan Data</p>
+                        {{-- @if ($pendingCount > 0)
+                            <span class="badge badge-warning right">{{ $pendingCount }}</span>
+                        @endif --}}
                     </a>
                 </li>
 

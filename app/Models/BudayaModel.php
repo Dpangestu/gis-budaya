@@ -27,12 +27,9 @@ class BudayaModel extends Model
     {
         // return $this->belongsTo(User::class, 'created_by');
     }
+
+    public function jadwal()
+    {
+        return $this->hasMany(JadwalModel::class);
+    }
 }
-
-
-
-
-
-
-
-

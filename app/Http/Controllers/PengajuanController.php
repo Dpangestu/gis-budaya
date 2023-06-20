@@ -11,12 +11,14 @@ use Illuminate\Support\Facades\DB;
 class PengajuanController extends Controller
 {
     public function index (){
-        $pengajuans = PengajuanModel::all();
 
+        $pengajuans = PengajuanModel::all();
+        $pendingCount = PengajuanModel::where('status', 'pending')->count();
         
         return view('pages.pengajuan.Pengajuan',[
             'titel' => 'Pengajuan Data',
             'pengajuans' => $pengajuans,
+            'pendingCount'   => $pendingCount,
         ]);
     }
     

@@ -40,8 +40,8 @@
 
                             <div class="form-group">
                                 <label for="deskripsi">Deskripsi</label>
-                                <input type="text" class="form-control" value="{{ $budaya->deskripsi }}"
-                                    @error('deskripsi') is invalid @enderror id="deskripsi" name="deskripsi" required>
+                                <textarea type="text" class="form-control" value="{{ $budaya->deskripsi }}" @error('deskripsi') is invalid @enderror
+                                    id="deskripsi" name="deskripsi" rows="8" required></textarea>
                                 @error('deskripsi')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -115,8 +115,8 @@
                                 @enderror
                             </div>
                             <div class="card-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-primary">Simpan</button>
+                                <a type="button" class="btn btn-secondary" data-dismiss="modal" href="/budaya">Close</a>
+                                <button type="submit" class="btn btn-primary float-right">Simpan</button>
                             </div>
                         </form>
                     </div>

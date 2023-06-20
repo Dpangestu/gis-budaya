@@ -118,16 +118,7 @@
                         </div>
                         <div class="card-body">
                             <div class="card-tools">
-                                <form action="/budaya/search" class="form-inline">
-                                    <div class="input-group input-group-sm" style="width: 250px;">
-                                        <input type="text" name="search_text" class="form-control float-right"
-                                            placeholder="Search" value="{{ $searchText ?? '' }}">
-                                        <div class="input-group-append">
-                                            <button type="submit" class="btn btn-default">
-                                                <i class="fas fa-search"></i>
-                                            </button>
-                                        </div>
-                                    </div>
+                                <form action="/budaya/search" class="form-inline float-right" style="margin-top: 23px;">
                                     &nbsp;
                                     <div class="input-group-append">
                                         <a class="btn btn-info btn-sm" href="/budaya/create">
@@ -144,7 +135,7 @@
                                 </form>
                             </div>
                             <br>
-                            <table class="table table-hover table-striped table-bordered text-nowrap">
+                            <table class="table table-hover table-striped table-bordered text-nowrap" id="example1">
                                 <thead>
 
                                     <tr class="bg-primary" style="text-align: center">
@@ -163,9 +154,10 @@
                                             <td>{{ $item->nama_budaya }}</td>
                                             <td>{{ $item->pengelola }}</td>
                                             <td>{{ $item->kategori }}</td>
-                                            <td>
-                                                <button type="button" class="btn btn-primary btn-sm mx-1" href="#"><i
-                                                        class="fas fa-search"></i></button>
+                                            <td style="text-align: center">
+                                                <a type="button" class="btn btn-primary btn-sm mx-1"
+                                                    href="/budaya/show/{{ $item->id_budaya }}"><i
+                                                        class="fas fa-search"></i></a>
                                                 <a class="btn btn-warning btn-sm mx-1"
                                                     href="/budaya/edit/{{ $item->id_budaya }}"><i
                                                         class="fas fa-pencil-alt"></i></a>
